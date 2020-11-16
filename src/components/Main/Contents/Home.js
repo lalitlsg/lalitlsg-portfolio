@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import code from "../../../images/code.svg";
+import boy1 from "../../../images/boy1.svg";
+import boy2 from "../../../images/boy2.svg";
 
 import profileimage from "../../../images/lalit.png";
 
@@ -19,8 +21,9 @@ const skillAnimate = keyframes`
 
 const HomeContent = styled.section`
   display: flex;
-
   height: 65vh;
+  justify-content: space-between;
+  position: relative;
   /* border-radius: 31% 69% 86% 14% / 70% 49% 51% 30%; */
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -28,8 +31,7 @@ const HomeContent = styled.section`
   }
 `;
 const Profile = styled.section`
-  width: 50%;
-  height: 100%;
+  margin-right: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,11 +42,10 @@ const Profile = styled.section`
   }
 `;
 const Skills = styled.section`
-  width: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(50px, min-content);
   @media screen and (max-width: 600px) {
     align-self: center;
     width: 100%;
@@ -116,6 +117,31 @@ const AllSkills = styled.section`
   }
 `;
 
+const animateSideImage = keyframes`
+0%{
+ top:-200%;
+}
+100%{
+  top:30%
+}
+`;
+
+const SkillSideImg = styled.img`
+  width: 25%;
+
+  position: absolute;
+  top: -50%;
+  left: 35%;
+  animation: ${animateSideImage} 3s cubic-bezier(0.01, 0.94, 0.46, 0.81)
+    infinite alternate;
+  @media screen and (max-width: 600px) {
+    left: 70%;
+  }
+  /* @media screen and (max-width: 900px) {
+    left: 50%;
+  } */
+`;
+
 const skills = [
   "HTML",
   "CSS",
@@ -129,18 +155,34 @@ const skills = [
 ];
 
 function Home() {
+  const [img, setImg] = useState(boy1);
+
+  useEffect(() => {
+    let arr = [boy1, boy2];
+
+    const interval = setInterval(() => {
+      arr = arr.map(item => (item === boy1 ? boy2 : boy1));
+      setImg(arr[0]);
+    }, 6000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <HomeContent>
       <AllSkills>
         <SkillTitle>Skills</SkillTitle>
         <Skills>
-          {skills.map((item, index) => (
-            <SkillWrapper key={index}>
+          {skills.map(item => (
+            <SkillWrapper key={item}>
               <Skill>{item}</Skill>
             </SkillWrapper>
           ))}
         </Skills>
       </AllSkills>
+      <SkillSideImg src={img} />
+
       <Profile>
         <ProfileImg src={profileimage} />
         <Name>Lalit Garghate</Name>
