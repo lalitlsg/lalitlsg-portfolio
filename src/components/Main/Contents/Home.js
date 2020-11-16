@@ -74,6 +74,10 @@ const SkillTitle = styled(Title)`
   text-align: left;
   @media screen and (max-width: 600px) {
     text-align: center;
+    /* color: black; */
+  }
+  @media screen and (max-width: 400px) {
+    text-align: center;
     color: black;
   }
 `;
