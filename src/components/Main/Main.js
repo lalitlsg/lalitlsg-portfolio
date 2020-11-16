@@ -13,6 +13,8 @@ export const Main = () => {
   return (
     <MainContent>
       <Switch>
+        <Route path="/" exact component={Home} />
+
         <Route path="/home" exact component={Home} />
         <Route path="/blogs" exact component={Blogs} />
         <Route path="/work" exact component={Work} />
