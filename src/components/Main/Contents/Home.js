@@ -122,7 +122,7 @@ const animateSideImage = keyframes`
  top:-200%;
 }
 100%{
-  top:25%
+  top:22%
 }
 `;
 
