@@ -40,8 +40,8 @@ function Blogs() {
   };
   return (
     <CardContainer>
-      {blogs.map(item => (
-        <Card>
+      {blogs.map((item, index) => (
+        <Card key={index}>
           <CardTitle>{item.title}</CardTitle>
           <CardBody fontSize={"16px"}>{item.info}</CardBody>
           <Button onClick={() => goToBlog(item.link)}>View Post</Button>

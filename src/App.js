@@ -15,7 +15,7 @@ function App() {
     <Wrapper dark={dark}>
       <Router>
         <Header handleClick={toggleDark} />
-        <Menu dark={dark} />
+        <Menu dark={dark ? 1 : 0} />
         <Main />
 
         <Footer />

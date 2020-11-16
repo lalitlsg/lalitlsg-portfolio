@@ -41,8 +41,8 @@ function Work() {
   };
   return (
     <CardContainer>
-      {work.map(item => (
-        <Card>
+      {work.map((item, index) => (
+        <Card key={index}>
           <CardTitle>{item.title}</CardTitle>
           <CardBody fontSize={"16px"}>{item.info}</CardBody>
           <Button onClick={() => goToWork(item.link)}>View Project</Button>
