@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import code from "../../../images/code.svg";
-import content from "../../../images/content.svg";
 
 import profileimage from "../../../images/lalit.png";
 
