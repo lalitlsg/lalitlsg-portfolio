@@ -60,8 +60,8 @@ export const Header = ({ handleClick }) => {
       <BrandName>@lalitlsg</BrandName>
       <AppBarItems>
         <Switch onClick={toggleDisplay}>
-          <ThemeImage src={moon} left={"0%"} displayImg={!display} />
-          <ThemeImage src={sun} left={"50%"} displayImg={display} />
+          <ThemeImage src={sun} left={"0%"} displayImg={!display} />
+          <ThemeImage src={moon} left={"50%"} displayImg={display} />
         </Switch>
         <Image src={profileimage} />
       </AppBarItems>
