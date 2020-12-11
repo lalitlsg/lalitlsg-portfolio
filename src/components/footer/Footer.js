@@ -50,13 +50,13 @@ export const Footer = () => {
   };
   return (
     <FooterContent>
-      {social.map((item, index) => (
+      {/* {social.map((item, index) => (
         <SocialLogo
           key={index}
           onClick={() => goToSocial(item.link)}
           src={item.img}
         ></SocialLogo>
-      ))}
+      ))} */}
     </FooterContent>
   );
 };

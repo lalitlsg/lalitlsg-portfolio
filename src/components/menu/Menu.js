@@ -42,6 +42,9 @@ function Menu({ dark }) {
         <RouterLink to="/work" dark={dark}>
           <MenuItem>Projects</MenuItem>
         </RouterLink>
+        <RouterLink to="/links" dark={dark}>
+          <MenuItem>Links</MenuItem>
+        </RouterLink>
       </MenuList>
     </MenuContent>
   );

@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./Contents/Home";
 import Blogs from "./Contents/Blogs";
 import Work from "./Contents/Work";
+import Links from "./Contents/Links";
 
 const MainContent = styled.main`
   flex: 1 1 70%;
@@ -18,6 +19,7 @@ export const Main = () => {
         <Route path="/home" exact component={Home} />
         <Route path="/blogs" exact component={Blogs} />
         <Route path="/work" exact component={Work} />
+        <Route path="/links" exact component={Links} />
       </Switch>
     </MainContent>
   );

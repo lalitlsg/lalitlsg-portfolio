@@ -36,6 +36,13 @@ const work = [
     info:
       "One For Me is an application which connects customers to developers to create their dream website",
     link: "https://upbeat-einstein-10a425.netlify.app/"
+  },
+  {
+    id: 5,
+    title: "Flickr Groups",
+    info:
+      "Here you can search flickr groups,see comparison of number of images of each group and their images in masonry layout.",
+    link: "https://stoic-clarke-da7932.netlify.app/"
   }
 ];
 
