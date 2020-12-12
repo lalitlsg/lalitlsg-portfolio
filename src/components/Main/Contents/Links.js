@@ -9,6 +9,7 @@ import Twitter from "../../../images/Twitter.svg";
 import StackOverflow from "../../../images/StackOverflow.svg";
 import Hackerrank from "../../../images/Hackerrank.svg";
 import Angellist from "../../../images/Angellist.svg";
+import GitHub from "../../../images/GitHub.svg";
 
 const links = [
   {
@@ -48,13 +49,13 @@ const links = [
     name: "Twitter"
   },
   {
-    id: 7,
-    img: StackOverflow,
-    link: "https://stackoverflow.com/users/11844605/lalit-garghate",
-    name: "StackOverflow"
+    id: 8,
+    img: GitHub,
+    link: "https://github.com/lalitlsg",
+    name: "GitHub"
   },
   {
-    id: 8,
+    id: 10,
     img: Hackerrank,
     link: "https://www.hackerrank.com/lalit_garghate1",
     name: "HackerRank"
@@ -64,6 +65,12 @@ const links = [
     img: Angellist,
     link: "https://angel.co/u/lalit-garghate",
     name: "AngelList"
+  },
+  {
+    id: 7,
+    img: StackOverflow,
+    link: "https://stackoverflow.com/users/11844605/lalit-garghate",
+    name: "StackOverflow"
   }
 ];
 
@@ -80,9 +87,9 @@ const LinkList = styled.div`
   border: 1px solid #b3b3ff;
   padding: 10px;
   border-radius: 2px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
   cursor: pointer;
   :hover {
     border: 1px solid #4d4dff;
@@ -93,16 +100,20 @@ const LinkList = styled.div`
 
 const LinkItem = styled.p`
   text-align: center;
+  align-self: center;
 `;
 
 const Logo = styled.img`
-  width: 20%;
-  height: 20%;
+  width: 50px;
+  height: 50px;
 `;
 
 const links_list = links.map(item => {
+  const goToSocial = link => {
+    window.open(link, "_blank");
+  };
   return (
-    <LinkList key={item.id}>
+    <LinkList key={item.id} onClick={() => goToSocial(item.link)}>
       <Logo src={item.img} />
       <LinkItem>{item.name}</LinkItem>
     </LinkList>
