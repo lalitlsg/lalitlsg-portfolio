@@ -5,6 +5,7 @@ import boy1 from "../../../images/boy1.svg";
 import boy2 from "../../../images/boy2.svg";
 
 import profileimage from "../../../images/lalit.png";
+import Activities from "./Activities";
 
 const skillAnimate = keyframes`
   0% {
@@ -151,7 +152,7 @@ const skills = [
   "Python",
   "Flask",
   "Docker",
-  "Kubernetes"
+  "Kubernetes",
 ];
 
 function Home() {
@@ -161,7 +162,7 @@ function Home() {
     let arr = [boy1, boy2];
 
     const interval = setInterval(() => {
-      arr = arr.map(item => (item === boy1 ? boy2 : boy1));
+      arr = arr.map((item) => (item === boy1 ? boy2 : boy1));
       setImg(arr[0]);
     }, 6000);
 
@@ -170,25 +171,28 @@ function Home() {
     };
   }, []);
   return (
-    <HomeContent>
-      <AllSkills>
-        <SkillTitle>Skills</SkillTitle>
-        <Skills>
-          {skills.map(item => (
-            <SkillWrapper key={item}>
-              <Skill>{item}</Skill>
-            </SkillWrapper>
-          ))}
-        </Skills>
-      </AllSkills>
-      <SkillSideImg src={img} />
+    <>
+      <HomeContent>
+        <AllSkills>
+          <SkillTitle>Skills</SkillTitle>
+          <Skills>
+            {skills.map((item) => (
+              <SkillWrapper key={item}>
+                <Skill>{item}</Skill>
+              </SkillWrapper>
+            ))}
+          </Skills>
+        </AllSkills>
+        <SkillSideImg src={img} />
 
-      <Profile>
-        <ProfileImg src={profileimage} />
-        <Name>Lalit Garghate</Name>
-        <Title>Software Engineer @GSLab</Title>
-      </Profile>
-    </HomeContent>
+        <Profile>
+          <ProfileImg src={profileimage} />
+          <Name>Lalit Garghate</Name>
+          <Title>Software Engineer @GSLab</Title>
+        </Profile>
+      </HomeContent>
+      <Activities />
+    </>
   );
 }
 
