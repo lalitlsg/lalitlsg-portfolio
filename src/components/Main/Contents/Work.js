@@ -1,65 +1,170 @@
-import React from "react";
+import React, { useState } from "react";
+import { MdKeyboardArrowRight, MdPlayCircleOutline } from "react-icons/md";
+
+import { AiOutlineProject, AiOutlineGithub } from "react-icons/ai";
+import { BiExpand } from "react-icons/bi";
+
+import { projects } from "../../../data/projects";
 
 import {
-  Card,
-  CardTitle,
-  CardBody,
-  CardContainer,
-  Button
-} from "../../../styles/Card";
-
-const work = [
-  {
-    id: 1,
-    title: "Parking App",
-    info:
-      "Manage parking of vehicles in your organization.You can park the vehicle, show the status of available slots and remove the vehicle by applying some charges based on 1Rs/min",
-    link: "https://parking-e486e.web.app"
-  },
-  {
-    id: 2,
-    title: "Sign In",
-    info:
-      "Simple Sign In Application which provides sign in using google, facebook and email registration",
-    link: "https://signup-24552.web.app"
-  },
-  {
-    id: 3,
-    title: "Len-Den",
-    info:
-      "Len-Den is an app which keeps the track of all your money with your friends,like how much you have to give them and how much you have to take from them.It can also used in shops to keep track of customer's money who buy item and pay later",
-    link: "https://lenden-68143.web.app/#/"
-  },
-  {
-    id: 4,
-    title: "One For Me",
-    info:
-      "One For Me is an application which connects customers to developers to create their dream website",
-    link: "https://upbeat-einstein-10a425.netlify.app/"
-  },
-  {
-    id: 5,
-    title: "Flickr Groups",
-    info:
-      "Here you can search flickr groups,see comparison of number of images of each group and their images in masonry layout.",
-    link: "https://stoic-clarke-da7932.netlify.app/"
-  }
-];
+  ExpandButton,
+  GridContainer,
+  GridItem,
+  Tag,
+  Title,
+  Gallery,
+  GalleryItem,
+  CardHeader,
+  CardDetails,
+  CardContent,
+  Description,
+  AppButton,
+  Image,
+  OverlayModel,
+  BackDrop,
+  ViewIcon,
+} from "../../../styles/Grid";
 
 function Work() {
-  const goToWork = link => {
+  const [currentProjects, setCurrentProjects] = useState(projects);
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [showFullImage, setShowFullImage] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [currentImage, setCurrentImage] = useState("");
+  const [currentVideo, setCurrentVideo] = useState("");
+
+  const goToLink = (link) => {
     window.open(link, "_blank");
   };
+
+  const getScrollPosition = () => {
+    setScrollPosition(window.pageYOffset);
+  };
+
+  const toggleVideoPlayer = (demoUrl) => {
+    getScrollPosition();
+    setShowVideoPlayer((currentShowVideoPlayer) => !currentShowVideoPlayer);
+    setCurrentVideo(demoUrl);
+  };
+
+  const toggleImage = (imageUrl) => {
+    getScrollPosition();
+    setShowFullImage((currentShowFullImage) => !currentShowFullImage);
+    setCurrentImage(imageUrl);
+  };
+
+  const expandCard = (id, action) => {
+    if (action === "expand") {
+      currentProjects.map((project) => {
+        if (project.id === id) {
+          project.width = "100%";
+          project.height = "480px";
+          project.expand = true;
+        }
+        return project;
+      });
+      setCurrentProjects([...currentProjects]);
+    }
+    if (action === "collapse") {
+      currentProjects.map((project) => {
+        if (project.id === id) {
+          project.width = "200px";
+          project.height = "150px";
+          project.expand = false;
+        }
+        return project;
+      });
+      setCurrentProjects([...currentProjects]);
+    }
+  };
+
   return (
-    <CardContainer>
-      {work.map(item => (
-        <Card key={item.id}>
-          <CardTitle>{item.title}</CardTitle>
-          <CardBody fontSize={"16px"}>{item.info}</CardBody>
-          <Button onClick={() => goToWork(item.link)}>View Project</Button>
-        </Card>
-      ))}
-    </CardContainer>
+    <>
+      {showFullImage && (
+        <BackDrop onClick={toggleImage} scrollPosition={scrollPosition}>
+          <OverlayModel animation={true}>
+            <Image src={currentImage} />
+          </OverlayModel>
+        </BackDrop>
+      )}
+      {showVideoPlayer && (
+        <BackDrop onClick={toggleVideoPlayer} scrollPosition={scrollPosition}>
+          <OverlayModel>
+            <iframe
+              src={currentVideo}
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              title="video"
+              allowFullScreen="allowfullscreen"
+              mozallowfullscreen="mozallowfullscreen"
+              msallowfullscreen="msallowfullscreen"
+              oallowfullscreen="oallowfullscreen"
+              webkitallowfullscreen="webkitallowfullscreen"
+              width="100%"
+              height="100%"
+              style={{ borderRadius: "5px" }}
+            />
+          </OverlayModel>
+        </BackDrop>
+      )}
+      <GridContainer>
+        {currentProjects.map((project) => (
+          <GridItem
+            key={project.id}
+            bgColor={project.bgColor}
+            width={project.width}
+            height={project.height}
+          >
+            <Tag> {project.tag}</Tag>
+            <CardHeader>
+              <Title>{project.title}</Title>
+            </CardHeader>
+            {project.expand ? (
+              <CardDetails>
+                <Gallery>
+                  {project?.images?.map((img) => (
+                    <GalleryItem key={img.id} gridArea={img.gridArea}>
+                      <Image src={img.url} />
+                      <ViewIcon onClick={() => toggleImage(img.url)}>
+                        <BiExpand />
+                      </ViewIcon>
+                    </GalleryItem>
+                  ))}
+                </Gallery>
+                <CardContent>
+                  <Description>{project?.info}</Description>
+                  <AppButton
+                    onClick={() => toggleVideoPlayer(project.youtubeLink)}
+                  >
+                    <MdPlayCircleOutline />
+                    View Demo
+                  </AppButton>
+                  <AppButton onClick={() => goToLink(project.link)}>
+                    <AiOutlineProject />
+                    View Project
+                  </AppButton>
+                  <AppButton onClick={() => goToLink(project.githubLink)}>
+                    <AiOutlineGithub />
+                    GitHub Link
+                  </AppButton>
+                </CardContent>
+              </CardDetails>
+            ) : null}
+            <ExpandButton expand={project.expand}>
+              {project.expand ? (
+                <MdKeyboardArrowRight
+                  onClick={() => expandCard(project.id, "collapse")}
+                />
+              ) : (
+                <MdKeyboardArrowRight
+                  onClick={() => expandCard(project.id, "expand")}
+                />
+              )}
+            </ExpandButton>
+          </GridItem>
+        ))}
+      </GridContainer>
+    </>
   );
 }
 

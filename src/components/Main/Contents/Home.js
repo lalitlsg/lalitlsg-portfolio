@@ -87,13 +87,17 @@ const SkillTitle = styled(Title)`
 const Skill = styled.p`
   color: white !important;
   flex: 1 1 100px;
+  height: 60px;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #5a8ef1;
   margin: 10px;
-  text-align: center;
   transform-origin: top center;
   text-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  font-size: 20px;
   animation: ${skillAnimate} 4s linear infinite alternate both;
 `;
 
@@ -132,7 +136,7 @@ const SkillSideImg = styled.img`
 
   position: absolute;
   top: -50%;
-  left: 35%;
+  left: 45%;
   animation: ${animateSideImage} 3s cubic-bezier(0.01, 0.94, 0.46, 0.81)
     infinite alternate;
   @media screen and (max-width: 600px) {
@@ -148,11 +152,11 @@ const skills = [
   "CSS",
   "JavaScript",
   "React",
+  "React Native",
   "SCSS",
-  "Python",
-  "Flask",
+  "Vue",
   "Docker",
-  "Kubernetes",
+  "Styled Components",
 ];
 
 function Home() {

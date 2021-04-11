@@ -60,8 +60,8 @@ const StyledCardBody = styled.div`
 `;
 
 const StyledImage = styled.img`
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
 `;
 
 const activities = [
