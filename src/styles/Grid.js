@@ -162,6 +162,17 @@ to{
 }
 `;
 
+const modelAnimationMobile = keyframes`
+from{
+    width: 0%;
+  height: 0%;
+}
+to{
+    width: 90%;
+    height: 40%;
+}
+`;
+
 export const OverlayModel = styled.div`
   width: 79%;
   height: 80%;
@@ -176,6 +187,11 @@ export const OverlayModel = styled.div`
   @media screen and (max-width: 750px) {
     width: 90%;
     height: 40%;
+    ${(props) =>
+      props.animation &&
+      css`
+        animation: ${modelAnimationMobile} 0.5s ease-in-out;
+      `}
   }
 `;
 
