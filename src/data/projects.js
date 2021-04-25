@@ -33,6 +33,20 @@ import lenden4 from "../images/project-images/lenden/lenden4.png";
 import lenden5 from "../images/project-images/lenden/lenden5.png";
 import lenden6 from "../images/project-images/lenden/lenden6.png";
 
+import shop1 from "../images/project-images/shop/shop1.png";
+import shop2 from "../images/project-images/shop/shop2.png";
+import shop3 from "../images/project-images/shop/shop3.png";
+import shop4 from "../images/project-images/shop/shop4.png";
+import shop5 from "../images/project-images/shop/shop5.png";
+import shop6 from "../images/project-images/shop/shop6.png";
+
+import places1 from "../images/project-images/places/places1.png";
+import places2 from "../images/project-images/places/places2.png";
+import places3 from "../images/project-images/places/places3.png";
+import places4 from "../images/project-images/places/places4.png";
+import places5 from "../images/project-images/places/places5.png";
+import places6 from "../images/project-images/places/places6.png";
+
 export const projects = [
   {
     id: "p5",
@@ -64,7 +78,7 @@ export const projects = [
     link: "https://upbeat-einstein-10a425.netlify.app/",
     githubLink: "https://github.com/lalitlsg/one-for-me",
     youtubeLink: "https://www.youtube.com/embed/LcLFSP0ol1k",
-    bgColor: "#c2c2ef",
+    bgColor: "#cda7d7",
     width: "230px",
     height: "150px",
     expand: false,
@@ -86,7 +100,7 @@ export const projects = [
     link: "https://parking-e486e.web.app",
     githubLink: "https://github.com/lalitlsg/Park-My-Vehicle",
     youtubeLink: "https://www.youtube.com/embed/pe6UxOGMuv0",
-    bgColor: "#f0bcf6",
+    bgColor: "#b9f9b9",
     width: "230px",
     height: "150px",
     expand: false,
@@ -130,7 +144,7 @@ export const projects = [
     link: "https://lenden-68143.web.app/#/",
     githubLink: "https://github.com/lalitlsg/LenDen-Web-App",
     youtubeLink: "https://www.youtube.com/embed/aiw8HzfxnbI",
-    bgColor: "#b5d9fc",
+    bgColor: "#b9f9b9",
     width: "230px",
     height: "150px",
     expand: false,
@@ -142,6 +156,51 @@ export const projects = [
       { id: "i4", url: lenden4 },
       { id: "i5", url: lenden5 },
       { id: "i6", url: lenden6, gridArea: "2 / 3 / -1 / -1" },
+    ],
+  },
+  {
+    id: "p6",
+    title: "ShopT",
+    info:
+      "Its an online shopping app built by using react native where user can select & order their favorite products and seller can list their products for sale.",
+    link: "https://expo.io/@lalitlsg/projects/shop",
+    githubLink:
+      "https://github.com/lalitlsg/react-native-shop-app-navigation-v5-",
+    youtubeLink: "https://www.youtube.com/embed/2lvaYiaBxZQ",
+    bgColor: "#b3b3ff",
+    width: "230px",
+    height: "150px",
+    expand: false,
+    tag: "React Native",
+    images: [
+      { id: "i1", url: shop1, gridArea: "1 / 1 / 3 / 3" },
+      { id: "i2", url: shop2 },
+      { id: "i3", url: shop3 },
+      { id: "i4", url: shop4 },
+      { id: "i5", url: shop5 },
+      { id: "i6", url: shop6, gridArea: "2 / 3 / -1 / -1" },
+    ],
+  },
+  {
+    id: "p7",
+    title: "Places",
+    info:
+      "Its an places app where you can store and list your favorites places with their image and location.It uses native features like camera & location",
+    link: "https://github.com/lalitlsg/react-native-places-app",
+    githubLink: "https://github.com/lalitlsg/react-native-places-app",
+    youtubeLink: "https://www.youtube.com/embed/gQhF1E8q0FU",
+    bgColor: "#b3b3ff",
+    width: "230px",
+    height: "150px",
+    expand: false,
+    tag: "React Native",
+    images: [
+      { id: "i1", url: places1, gridArea: "1 / 1 / 3 / 3" },
+      { id: "i2", url: places2 },
+      { id: "i3", url: places3 },
+      { id: "i4", url: places4 },
+      { id: "i5", url: places5 },
+      { id: "i6", url: places6, gridArea: "2 / 3 / -1 / -1" },
     ],
   },
 ];

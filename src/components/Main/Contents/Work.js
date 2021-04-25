@@ -68,7 +68,7 @@ function Work() {
     if (action === "collapse") {
       currentProjects.map((project) => {
         if (project.id === id) {
-          project.width = "200px";
+          project.width = "230px";
           project.height = "150px";
           project.expand = false;
         }
