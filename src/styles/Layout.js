@@ -5,6 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   color: ${({ dark }) => (dark ? "white" : "black")};
-  background-color: ${({ dark }) => (dark ? "black" : "white")};
+  background-color: ${({ dark }) => (dark ? "#121212" : "white")};
   text-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 `;

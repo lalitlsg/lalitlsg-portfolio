@@ -192,7 +192,7 @@ function Home() {
         <Profile>
           <ProfileImg src={profileimage} />
           <Name>Lalit Garghate</Name>
-          <Title>Software Engineer @GSLab</Title>
+          <Title>Software Engineer</Title>
         </Profile>
       </HomeContent>
       <Activities />

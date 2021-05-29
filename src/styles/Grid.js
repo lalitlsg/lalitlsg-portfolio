@@ -17,6 +17,7 @@ export const GridItem = styled.div`
   flex-direction: column;
   padding: 10px;
   text-align: center;
+  color: #000;
   :hover {
   }
   background-image: linear-gradient(

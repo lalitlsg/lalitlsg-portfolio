@@ -10,68 +10,75 @@ import StackOverflow from "../../../images/StackOverflow.svg";
 import Hackerrank from "../../../images/Hackerrank.svg";
 import Angellist from "../../../images/Angellist.svg";
 import GitHub from "../../../images/GitHub.svg";
+import Leetcode from "../../../images/LeetCode.png";
 
 const links = [
   {
     id: 1,
     img: Instagram,
     link: "https://www.instagram.com/lalits_17/",
-    name: "Instagram"
+    name: "Instagram",
   },
   {
     id: 2,
     img: Facebook,
     link: "https://www.facebook.com/lalitlsg17/",
-    name: "Facebook"
+    name: "Facebook",
   },
   {
     id: 3,
     img: Linkedin,
     link: "https://www.linkedin.com/in/lalit-garghate/",
-    name: "Linkedin"
+    name: "Linkedin",
   },
   {
     id: 4,
     img: Youtube,
     link: "https://www.youtube.com/channel/UCHOKI7oqx0J7iEmeTR2V7xw",
-    name: "Youtube"
+    name: "Youtube",
   },
   {
     id: 5,
     img: Medium,
     link: "https://medium.com/@lalit.garghate",
-    name: "Medium"
+    name: "Medium",
   },
   {
     id: 6,
     img: Twitter,
     link: "https://twitter.com/lalitlsg",
-    name: "Twitter"
+    name: "Twitter",
   },
   {
     id: 8,
     img: GitHub,
     link: "https://github.com/lalitlsg",
-    name: "GitHub"
+    name: "GitHub",
   },
   {
     id: 10,
     img: Hackerrank,
     link: "https://www.hackerrank.com/lalit_garghate1",
-    name: "HackerRank"
+    name: "HackerRank",
   },
   {
     id: 9,
     img: Angellist,
     link: "https://angel.co/u/lalit-garghate",
-    name: "AngelList"
+    name: "AngelList",
   },
   {
     id: 7,
     img: StackOverflow,
     link: "https://stackoverflow.com/users/11844605/lalit-garghate",
-    name: "StackOverflow"
-  }
+    name: "StackOverflow",
+  },
+  {
+    id: 8,
+    img: Leetcode,
+    link: "https://leetcode.com/lalitlsg/",
+    name: "LeetCode",
+  },
 ];
 
 const LinksWrapper = styled.div`
@@ -108,8 +115,8 @@ const Logo = styled.img`
   height: 50px;
 `;
 
-const links_list = links.map(item => {
-  const goToSocial = link => {
+const links_list = links.map((item) => {
+  const goToSocial = (link) => {
     window.open(link, "_blank");
   };
   return (
