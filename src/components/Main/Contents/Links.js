@@ -10,7 +10,7 @@ import StackOverflow from "../../../images/StackOverflow.svg";
 import Hackerrank from "../../../images/Hackerrank.svg";
 import Angellist from "../../../images/Angellist.svg";
 import GitHub from "../../../images/GitHub.svg";
-import Leetcode from "../../../images/LeetCode.png";
+// import Leetcode from "../../../images/LeetCode.png";
 
 const links = [
   {
