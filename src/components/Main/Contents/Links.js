@@ -73,12 +73,12 @@ const links = [
     link: "https://stackoverflow.com/users/11844605/lalit-garghate",
     name: "StackOverflow",
   },
-  {
-    id: 8,
-    img: Leetcode,
-    link: "https://leetcode.com/lalitlsg/",
-    name: "LeetCode",
-  },
+  // {
+  //   id: 8,
+  //   img: Leetcode,
+  //   link: "https://leetcode.com/lalitlsg/",
+  //   name: "LeetCode",
+  // },
 ];
 
 const LinksWrapper = styled.div`
