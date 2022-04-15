@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { StyledHorizontalScroller, StyledImageCard, StyledTabContent } from '../../../../styles/HomeStyles';
 import Controls from './Controls';
 import hackerrank1 from '../../../../images/coding-profiles/hackerrank/hackerrank1.png';
@@ -40,6 +40,10 @@ const TabContent = ({ currentTab }) => {
       scrollRef.current.scrollLeft += 450;
     }
   };
+
+  useEffect(() => {
+    scrollRef.current.scrollLeft = 0;
+  }, [currentTab]);
 
   return (
     <StyledTabContent>

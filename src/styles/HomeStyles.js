@@ -123,6 +123,7 @@ export const StyledImageCard = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #fff;
 
   @media screen and (max-width: 600px) {
     width: 280px;
