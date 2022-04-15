@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import profileimage from "../../images/lalit.png";
-import sun from "../../images/sun.svg";
-import moon from "../../images/moon.svg";
+import profileimage from '../../images/lalit.png';
+import sun from '../../images/sun.svg';
+import moon from '../../images/moon.svg';
 
 const Appbar = styled.nav`
   min-height: 10%;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #dae1d1;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const BrandName = styled.h1`
@@ -34,7 +34,7 @@ const ThemeImage = styled.img`
   margin: 1px 0;
   position: absolute;
   left: ${({ left }) => left};
-  display: ${({ displayImg }) => (displayImg ? "block" : "none")};
+  display: ${({ displayImg }) => (displayImg ? 'block' : 'none')};
 `;
 
 const Switch = styled.div`
@@ -60,8 +60,8 @@ export const Header = ({ handleClick }) => {
       <BrandName>@lalitlsg</BrandName>
       <AppBarItems>
         <Switch onClick={toggleDisplay}>
-          <ThemeImage src={sun} left={"0%"} displayImg={!display} />
-          <ThemeImage src={moon} left={"50%"} displayImg={display} />
+          <ThemeImage src={sun} left={'0%'} displayImg={!display} />
+          <ThemeImage src={moon} left={'50%'} displayImg={display} />
         </Switch>
         <Image src={profileimage} />
       </AppBarItems>

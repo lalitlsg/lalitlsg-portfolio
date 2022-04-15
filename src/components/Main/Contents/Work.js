@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { MdKeyboardArrowRight, MdPlayCircleOutline } from "react-icons/md";
+import React, { useEffect, useState } from 'react';
+import { MdKeyboardArrowRight, MdPlayCircleOutline } from 'react-icons/md';
 
-import { AiOutlineProject, AiOutlineGithub } from "react-icons/ai";
-import { BiExpand } from "react-icons/bi";
+import { AiOutlineProject, AiOutlineGithub } from 'react-icons/ai';
+import { BiExpand } from 'react-icons/bi';
 
-import { projects } from "../../../data/projects";
+import { projects } from '../../../data/projects';
 
 import {
   ExpandButton,
@@ -23,18 +23,22 @@ import {
   OverlayModel,
   BackDrop,
   ViewIcon,
-} from "../../../styles/Grid";
+} from '../../../styles/Grid';
 
 function Work() {
   const [currentProjects, setCurrentProjects] = useState(projects);
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [showFullImage, setShowFullImage] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [currentImage, setCurrentImage] = useState("");
-  const [currentVideo, setCurrentVideo] = useState("");
+  const [currentImage, setCurrentImage] = useState('');
+  const [currentVideo, setCurrentVideo] = useState('');
+
+  useEffect(() => {
+    document.title = 'Lalit | Projects';
+  }, []);
 
   const goToLink = (link) => {
-    window.open(link, "_blank");
+    window.open(link, '_blank');
   };
 
   const getScrollPosition = () => {
@@ -54,22 +58,22 @@ function Work() {
   };
 
   const expandCard = (id, action) => {
-    if (action === "expand") {
+    if (action === 'expand') {
       currentProjects.map((project) => {
         if (project.id === id) {
-          project.width = "100%";
-          project.height = "480px";
+          project.width = '100%';
+          project.height = '480px';
           project.expand = true;
         }
         return project;
       });
       setCurrentProjects([...currentProjects]);
     }
-    if (action === "collapse") {
+    if (action === 'collapse') {
       currentProjects.map((project) => {
         if (project.id === id) {
-          project.width = "230px";
-          project.height = "150px";
+          project.width = '230px';
+          project.height = '150px';
           project.expand = false;
         }
         return project;
@@ -102,19 +106,14 @@ function Work() {
               webkitallowfullscreen="webkitallowfullscreen"
               width="100%"
               height="100%"
-              style={{ borderRadius: "5px" }}
+              style={{ borderRadius: '5px' }}
             />
           </OverlayModel>
         </BackDrop>
       )}
       <GridContainer>
         {currentProjects.map((project) => (
-          <GridItem
-            key={project.id}
-            bgColor={project.bgColor}
-            width={project.width}
-            height={project.height}
-          >
+          <GridItem key={project.id} bgColor={project.bgColor} width={project.width} height={project.height}>
             <Tag> {project.tag}</Tag>
             <CardHeader>
               <Title>{project.title}</Title>
@@ -133,9 +132,7 @@ function Work() {
                 </Gallery>
                 <CardContent>
                   <Description>{project?.info}</Description>
-                  <AppButton
-                    onClick={() => toggleVideoPlayer(project.youtubeLink)}
-                  >
+                  <AppButton onClick={() => toggleVideoPlayer(project.youtubeLink)}>
                     <MdPlayCircleOutline />
                     View Demo
                   </AppButton>
@@ -152,13 +149,9 @@ function Work() {
             ) : null}
             <ExpandButton expand={project.expand}>
               {project.expand ? (
-                <MdKeyboardArrowRight
-                  onClick={() => expandCard(project.id, "collapse")}
-                />
+                <MdKeyboardArrowRight onClick={() => expandCard(project.id, 'collapse')} />
               ) : (
-                <MdKeyboardArrowRight
-                  onClick={() => expandCard(project.id, "expand")}
-                />
+                <MdKeyboardArrowRight onClick={() => expandCard(project.id, 'expand')} />
               )}
             </ExpandButton>
           </GridItem>

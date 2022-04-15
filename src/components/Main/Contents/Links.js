@@ -1,77 +1,77 @@
-import React from "react";
-import styled from "styled-components";
-import Instagram from "../../../images/Instagram.svg";
-import Facebook from "../../../images/Facebook.svg";
-import Linkedin from "../../../images/Linkedin.svg";
-import Youtube from "../../../images/Youtube.svg";
-import Medium from "../../../images/Medium.svg";
-import Twitter from "../../../images/Twitter.svg";
-import StackOverflow from "../../../images/StackOverflow.svg";
-import Hackerrank from "../../../images/Hackerrank.svg";
-import Angellist from "../../../images/Angellist.svg";
-import GitHub from "../../../images/GitHub.svg";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import Instagram from '../../../images/Instagram.svg';
+import Facebook from '../../../images/Facebook.svg';
+import Linkedin from '../../../images/Linkedin.svg';
+import Youtube from '../../../images/Youtube.svg';
+import Medium from '../../../images/Medium.svg';
+import Twitter from '../../../images/Twitter.svg';
+import StackOverflow from '../../../images/StackOverflow.svg';
+import Hackerrank from '../../../images/Hackerrank.svg';
+import Angellist from '../../../images/Angellist.svg';
+import GitHub from '../../../images/GitHub.svg';
 // import Leetcode from "../../../images/LeetCode.png";
 
 const links = [
   {
     id: 1,
     img: Instagram,
-    link: "https://www.instagram.com/lalits_17/",
-    name: "Instagram",
+    link: 'https://www.instagram.com/lalits_17/',
+    name: 'Instagram',
   },
   {
     id: 2,
     img: Facebook,
-    link: "https://www.facebook.com/lalitlsg17/",
-    name: "Facebook",
+    link: 'https://www.facebook.com/lalitlsg17/',
+    name: 'Facebook',
   },
   {
     id: 3,
     img: Linkedin,
-    link: "https://www.linkedin.com/in/lalit-garghate/",
-    name: "Linkedin",
+    link: 'https://www.linkedin.com/in/lalit-garghate/',
+    name: 'Linkedin',
   },
   {
     id: 4,
     img: Youtube,
-    link: "https://www.youtube.com/channel/UCHOKI7oqx0J7iEmeTR2V7xw",
-    name: "Youtube",
+    link: 'https://www.youtube.com/channel/UCHOKI7oqx0J7iEmeTR2V7xw',
+    name: 'Youtube',
   },
   {
     id: 5,
     img: Medium,
-    link: "https://medium.com/@lalit.garghate",
-    name: "Medium",
+    link: 'https://medium.com/@lalit.garghate',
+    name: 'Medium',
   },
   {
     id: 6,
     img: Twitter,
-    link: "https://twitter.com/lalitlsg",
-    name: "Twitter",
+    link: 'https://twitter.com/lalitlsg',
+    name: 'Twitter',
   },
   {
     id: 8,
     img: GitHub,
-    link: "https://github.com/lalitlsg",
-    name: "GitHub",
+    link: 'https://github.com/lalitlsg',
+    name: 'GitHub',
   },
   {
     id: 10,
     img: Hackerrank,
-    link: "https://www.hackerrank.com/lalit_garghate1",
-    name: "HackerRank",
+    link: 'https://www.hackerrank.com/lalit_garghate1',
+    name: 'HackerRank',
   },
   {
     id: 9,
     img: Angellist,
-    link: "https://angel.co/u/lalit-garghate",
-    name: "AngelList",
+    link: 'https://angel.co/u/lalit-garghate',
+    name: 'AngelList',
   },
   {
     id: 7,
     img: StackOverflow,
-    link: "https://stackoverflow.com/users/11844605/lalit-garghate",
-    name: "StackOverflow",
+    link: 'https://stackoverflow.com/users/11844605/lalit-garghate',
+    name: 'StackOverflow',
   },
   // {
   //   id: 8,
@@ -117,8 +117,9 @@ const Logo = styled.img`
 
 const links_list = links.map((item) => {
   const goToSocial = (link) => {
-    window.open(link, "_blank");
+    window.open(link, '_blank');
   };
+
   return (
     <LinkList key={item.id} onClick={() => goToSocial(item.link)}>
       <Logo src={item.img} />
@@ -128,6 +129,9 @@ const links_list = links.map((item) => {
 });
 
 const Links = () => {
+  useEffect(() => {
+    document.title = 'Lalit | Links';
+  }, []);
   return <LinksWrapper>{links_list}</LinksWrapper>;
 };
 
