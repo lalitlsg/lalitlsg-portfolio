@@ -10,26 +10,33 @@ import StackOverflow from '../../../images/StackOverflow.svg';
 import Hackerrank from '../../../images/Hackerrank.svg';
 import Angellist from '../../../images/Angellist.svg';
 import GitHub from '../../../images/GitHub.svg';
-// import Leetcode from "../../../images/LeetCode.png";
+import Leetcode from '../../../images/LeetCode.png';
+import GeeksForGeeks from '../../../images/geeksforgeeks.png';
 
 const links = [
-  {
-    id: 1,
-    img: Instagram,
-    link: 'https://www.instagram.com/lalits_17/',
-    name: 'Instagram',
-  },
-  {
-    id: 2,
-    img: Facebook,
-    link: 'https://www.facebook.com/lalitlsg17/',
-    name: 'Facebook',
-  },
   {
     id: 3,
     img: Linkedin,
     link: 'https://www.linkedin.com/in/lalit-garghate/',
     name: 'Linkedin',
+  },
+  {
+    id: 12,
+    img: Leetcode,
+    link: 'https://leetcode.com/lalitlsg/',
+    name: 'LeetCode',
+  },
+  {
+    id: 10,
+    img: Hackerrank,
+    link: 'https://www.hackerrank.com/lalit_garghate1',
+    name: 'HackerRank',
+  },
+  {
+    id: 11,
+    img: GeeksForGeeks,
+    link: 'https://auth.geeksforgeeks.org/user/lalitgarghate/profile',
+    name: 'GeeksForGeeks',
   },
   {
     id: 4,
@@ -55,12 +62,7 @@ const links = [
     link: 'https://github.com/lalitlsg',
     name: 'GitHub',
   },
-  {
-    id: 10,
-    img: Hackerrank,
-    link: 'https://www.hackerrank.com/lalit_garghate1',
-    name: 'HackerRank',
-  },
+
   {
     id: 9,
     img: Angellist,
@@ -73,12 +75,19 @@ const links = [
     link: 'https://stackoverflow.com/users/11844605/lalit-garghate',
     name: 'StackOverflow',
   },
-  // {
-  //   id: 8,
-  //   img: Leetcode,
-  //   link: "https://leetcode.com/lalitlsg/",
-  //   name: "LeetCode",
-  // },
+
+  {
+    id: 1,
+    img: Instagram,
+    link: 'https://www.instagram.com/lalits_17/',
+    name: 'Instagram',
+  },
+  {
+    id: 2,
+    img: Facebook,
+    link: 'https://www.facebook.com/lalitlsg17/',
+    name: 'Facebook',
+  },
 ];
 
 const LinksWrapper = styled.div`

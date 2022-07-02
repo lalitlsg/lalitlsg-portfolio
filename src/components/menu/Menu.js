@@ -40,7 +40,7 @@ function Menu({ dark }) {
           <MenuItem>Blogs</MenuItem>
         </RouterLink>
         <RouterLink to="/work" dark={dark}>
-          <MenuItem>Projects</MenuItem>
+          <MenuItem>Work</MenuItem>
         </RouterLink>
         <RouterLink to="/links" dark={dark}>
           <MenuItem>Links</MenuItem>

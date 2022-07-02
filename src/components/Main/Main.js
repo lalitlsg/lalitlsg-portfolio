@@ -5,7 +5,7 @@ import Home from './Contents/Home';
 import Loading from './Contents/Loading';
 
 const Blogs = lazy(() => import('./Contents/Blogs'));
-const Work = lazy(() => import('./Contents/Work'));
+const Work = lazy(() => import('./Contents/work/Work'));
 const Links = lazy(() => import('./Contents/Links'));
 
 const MainContent = styled.main`

@@ -4,7 +4,7 @@ import { MdKeyboardArrowRight, MdPlayCircleOutline } from 'react-icons/md';
 import { AiOutlineProject, AiOutlineGithub } from 'react-icons/ai';
 import { BiExpand } from 'react-icons/bi';
 
-import { projects } from '../../../data/projects';
+import { projects } from '../../../../data/projects';
 
 import {
   ExpandButton,
@@ -23,9 +23,9 @@ import {
   OverlayModel,
   BackDrop,
   ViewIcon,
-} from '../../../styles/Grid';
+} from '../../../../styles/Grid';
 
-function Work() {
+function Projects() {
   const [currentProjects, setCurrentProjects] = useState(projects);
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [showFullImage, setShowFullImage] = useState(false);
@@ -161,4 +161,4 @@ function Work() {
   );
 }
 
-export default Work;
+export default Projects;
