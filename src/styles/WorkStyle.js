@@ -9,7 +9,7 @@ export const StyledSandboxContainer = styled.section`
 `;
 
 export const StyledSingleSandbox = styled.a`
-  background-color: #fafafa;
+  background-color: ${(props) => (props.dark ? '#1a1a1a' : '#fafafa')};
   margin: 1rem;
   padding: 1rem;
   border-radius: 5px;
@@ -19,7 +19,7 @@ export const StyledSingleSandbox = styled.a`
   align-items: center;
   justify-content: space-between;
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${(props) => (props.dark ? '#1a1a1a' : '#f0f0f0')};
   }
   &:active,
   &:focus,
