@@ -1,17 +1,44 @@
-import React from 'react';
-import { StyledContent, StyledDiv, StyledContainer, StyledSection, StyledTitle } from '../../../../styles/HomeStyles';
+import React, { useContext } from "react";
+import { Theme } from "../../../../App";
+import {
+  StyledContent,
+  StyledDiv,
+  StyledContainer,
+  StyledSection,
+  StyledTitle,
+} from "../../../../styles/HomeStyles";
 
-const primary = ['Javascript', 'React', 'HTML', 'CSS', 'SCSS', 'Styled Components'];
-const secondary = ['NodeJS', 'Java', 'React Native', 'OpenStack', 'Zabbix'];
+const primary = [
+  "Javascript",
+  "React",
+  "HTML",
+  "CSS",
+  "Webpack",
+  "Data Structures",
+  "Algorithms",
+];
+const secondary = [
+  "Java",
+  "NodeJS",
+  "React Native",
+  "MongoDB",
+  "Spring",
+  "Docker",
+  "Kubernetes",
+];
 
 const SkillComponent = () => {
+  const dark = useContext(Theme);
+
   return (
     <StyledContainer>
       <StyledSection>
         <StyledTitle>Primary</StyledTitle>
         <StyledContent>
           {primary.map((s) => (
-            <StyledDiv key={s}>{s}</StyledDiv>
+            <StyledDiv dark={dark} key={s}>
+              {s}
+            </StyledDiv>
           ))}
         </StyledContent>
       </StyledSection>
@@ -19,7 +46,9 @@ const SkillComponent = () => {
         <StyledTitle>Secondary</StyledTitle>
         <StyledContent>
           {secondary.map((s) => (
-            <StyledDiv key={s}>{s}</StyledDiv>
+            <StyledDiv dark={dark} key={s}>
+              {s}
+            </StyledDiv>
           ))}
         </StyledContent>
       </StyledSection>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   StyledCircle,
   StyledExperienceDescription,
@@ -7,7 +7,7 @@ import {
   StyledContainer,
   StyledSection,
   StyledTitleText,
-} from '../../../../styles/HomeStyles';
+} from "../../../../styles/HomeStyles";
 
 const ExperienceComponent = () => {
   return (
@@ -19,10 +19,15 @@ const ExperienceComponent = () => {
         </StyledExperienceTitle>
         <StyledExperienceDescription>
           <StyledPoints>
-            - Worked on building a checkout library which supports all kinds of payment options like
-            CC/DC/NB/UPI/Wallet/EMI
+            Worked on a Checkout library which is used to make payments and
+            handles 0.25M transactions per day.
           </StyledPoints>
-          <StyledPoints> - Worked on building a monitoring dashboard for EDC Devices, Developer docs. </StyledPoints>
+          <StyledPoints>
+            Contributed to developer docs website of paytm’s payment gateway.
+          </StyledPoints>
+          <StyledPoints>
+            Worked on building monitoring dashboards for EDC devices.
+          </StyledPoints>
         </StyledExperienceDescription>
       </StyledSection>
       <StyledSection>
@@ -31,14 +36,22 @@ const ExperienceComponent = () => {
           <StyledTitleText>GS Lab</StyledTitleText>
         </StyledExperienceTitle>
         <StyledExperienceDescription>
-          <StyledPoints>- Build the UI of a Cloud Based Project from Scratch.</StyledPoints>
           <StyledPoints>
-            - Responsible for converting an old cloud orchestration application from existing monolithic architecture
-            into modern microservices.Worked on UI and Backend part of it{' '}
+            Built a dashboard called Multi Cloud which is a centralized
+            dashboard for creating virtual machines on different cloud
+            providers.
           </StyledPoints>
           <StyledPoints>
-            - Done the POC's like custom openvpn plugin using python, Automation and Monitoring using Zabbix, Deployment
-            of application using kubernetes etc.
+            Migrated a backend of cloud based project from monolith to
+            microservice architecture.
+          </StyledPoints>
+          <StyledPoints>
+            Done the POC’s like
+            <StyledExperienceDescription>
+              <StyledPoints>Customization of openvpn plugin</StyledPoints>
+              <StyledPoints>Zabbix Automation and Monitoring</StyledPoints>
+              <StyledPoints>Deployments using Kubernetes</StyledPoints>
+            </StyledExperienceDescription>
           </StyledPoints>
         </StyledExperienceDescription>
       </StyledSection>
