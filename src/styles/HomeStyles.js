@@ -51,6 +51,7 @@ export const StyledDiv = styled.div`
   background-color: ${(props) => props.dark ? "#202020" : "#000000"};
   color: #ffffff;
   margin-right: 8px;
+  margin-bottom: 10px;
   border-radius: 20px;
   font-weight: bold;
   display: flex;
