@@ -11,9 +11,14 @@ import {
 const primary = [
   "Javascript",
   "React",
+  "Next",
   "HTML",
   "CSS",
   "Webpack",
+  "Redux",
+  "Redux Toolkit",
+  "Nginx",
+  "Firebase",
   "Data Structures",
   "Algorithms",
 ];
