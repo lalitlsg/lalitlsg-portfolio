@@ -15,6 +15,36 @@ const ExperienceComponent = () => {
       <StyledSection>
         <StyledExperienceTitle>
           <StyledCircle />
+          <StyledTitleText>Navi</StyledTitleText>
+        </StyledExperienceTitle>
+        <StyledExperienceDescription>
+          <StyledPoints>
+          Led the design and development of Navi's personal loan journey on the web, including UI
+          architecture, authentication, and dynamic configuration systems.
+          </StyledPoints>
+          <StyledPoints>
+          Built a settlement portal for recharge and bill payments, streamlining transactions and improving
+          operational efficiency.
+          </StyledPoints>
+          <StyledPoints>
+          Contributed to the creation of an in-house CRM tool featuring v-KYC, real-time chat, email
+          integration, and data annotation, reducing ticket handling time by 39%.
+          </StyledPoints>
+          <StyledPoints>
+          Developed a chatbot flow portal integrated into Navi's mobile app, enhancing customer support
+response time.
+          </StyledPoints>
+          <StyledPoints>
+          Developed a real-time chat solution within the CRM, improving customer query resolution.
+          </StyledPoints>
+          <StyledPoints>
+          Created a data annotation tool for categorizing data, supporting machine learning model training.
+          </StyledPoints>
+        </StyledExperienceDescription>
+      </StyledSection>
+      <StyledSection>
+        <StyledExperienceTitle>
+          <StyledCircle />
           <StyledTitleText>Paytm</StyledTitleText>
         </StyledExperienceTitle>
         <StyledExperienceDescription>

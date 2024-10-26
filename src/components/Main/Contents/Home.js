@@ -34,12 +34,15 @@ const Home = () => {
             <StyledDesc dark={dark}>
               <div>
                 A <StyledDescName dark={dark}>software engineer</StyledDescName>{" "}
-                having more than <StyledDescName dark={dark}>3 years</StyledDescName> of
+                having more than <StyledDescName dark={dark}>5 years</StyledDescName> of
                 experience.
               </div>
 
               <div>
                 I have worked on the domains like{" "}
+                <StyledDescName dark={dark}>lending,</StyledDescName> {" "}
+                <StyledDescName dark={dark}>CRM,</StyledDescName> {" "}
+                <StyledDescName dark={dark}>fintech,</StyledDescName> {" "}
                 <StyledDescName dark={dark}>payments</StyledDescName> and{" "}
                 <StyledDescName dark={dark}>cloud</StyledDescName>.
               </div>
