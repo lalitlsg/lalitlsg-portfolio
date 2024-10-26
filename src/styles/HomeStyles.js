@@ -126,7 +126,7 @@ export const StyledTab = styled.div`
 
 export const StyledHorizontalScroller = styled.div`
   padding: 20px;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   scroll-behavior: smooth;
