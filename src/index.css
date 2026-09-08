@@ -126,9 +126,10 @@ button,
   position: sticky;
   top: 0;
   z-index: 20;
-  height: var(--nav);
+  min-height: var(--nav);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   backdrop-filter: blur(18px);
   background: color-mix(in srgb, var(--bg) 78%, transparent);
   border-bottom: 1px solid var(--line);
@@ -244,8 +245,16 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.6rem, 6vw, 5.1rem);
-  margin: 14px 0 18px;
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  margin: 10px 0 8px;
+}
+
+.display {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.15rem);
+  line-height: 1.25;
+  margin-bottom: 18px;
+  max-width: 34ch;
 }
 
 .accent {
@@ -491,7 +500,7 @@ h2 {
 
 .chip {
   border: 1px solid var(--line);
-  background: var(--bg);
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.08), rgba(78, 224, 194, 0.06));
   color: var(--ink);
   border-radius: 999px;
   padding: 6px 12px;
@@ -638,15 +647,19 @@ h2 {
   .mobile-menu {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 12px 16px 20px;
-    border-bottom: 1px solid var(--line);
-    background: var(--bg);
+    gap: 4px;
+    width: 100%;
+    padding: 8px 16px 18px;
+    background: var(--bg-2);
   }
 
-  .mobile-menu a {
-    padding: 10px 4px;
+  .mobile-menu a,
+  .mobile-menu .icon-btn {
+    padding: 12px 8px;
     color: var(--ink);
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 12px;
   }
 
   .portrait {

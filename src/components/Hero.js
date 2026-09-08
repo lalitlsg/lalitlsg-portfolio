@@ -10,9 +10,10 @@ export default function Hero() {
           <p className="eyebrow">
             <span className="dot" /> {profile.role} at {profile.company} · {profile.years} years
           </p>
-          <h1>
+          <h1>{profile.name}</h1>
+          <p className="display">
             I design and ship <span className="accent">premium product UI</span> for lending, payments, and CRM.
-          </h1>
+          </p>
           <p className="lede">{profile.summary}</p>
           <div className="actions">
             <a className="btn btn-primary" href={profile.resumeUrl} target="_blank" rel="noreferrer">
