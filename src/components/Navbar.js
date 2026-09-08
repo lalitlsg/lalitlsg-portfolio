@@ -26,38 +26,42 @@ export default function Navbar({ theme, onToggle }) {
   }, []);
 
   return (
-    <header className="site-header">
-      <div className="wrap nav">
-        <NavLink className="brand" to="/" onClick={() => setOpen(false)}>
-          <span className="mark">LG</span>
-          <span className="brand-name">Lalit Garghate</span>
-        </NavLink>
-        <nav className="nav-links" aria-label="Primary">
-          {links.map((link) => (
-            <NavLink key={link.label} to={link.to}>
-              {link.label}
-            </NavLink>
-          ))}
-          <button className="text-btn" type="button" onClick={onToggle} aria-label="Toggle color theme">
-            {theme === "dark" ? "Light" : "Dark"}
+    <>
+      <header className="site-header">
+        <div className="wrap nav">
+          <NavLink className="brand" to="/" onClick={() => setOpen(false)}>
+            <span className="mark">LG</span>
+            <span className="brand-name">Lalit Garghate</span>
+          </NavLink>
+          <nav className="nav-links" aria-label="Primary">
+            {links.map((link) => (
+              <NavLink key={link.label} to={link.to}>
+                {link.label}
+              </NavLink>
+            ))}
+            <button className="text-btn" type="button" onClick={onToggle} aria-label="Toggle color theme">
+              {theme === "dark" ? "Light" : "Dark"}
+            </button>
+          </nav>
+          <button className="menu-btn" type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-label="Toggle menu">
+            {open ? "Close" : "Menu"}
           </button>
-        </nav>
-        <button className="menu-btn" type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-label="Toggle menu">
-          {open ? "Close" : "Menu"}
-        </button>
-      </div>
-      <div className={`drawer ${open ? "is-open" : ""}`} hidden={!open}>
-        <nav className="drawer-nav" aria-label="Mobile">
-          {links.map((link) => (
-            <NavLink key={link.label} to={link.to} onClick={() => setOpen(false)}>
-              {link.label}
-            </NavLink>
-          ))}
-          <button className="text-btn" type="button" onClick={onToggle}>
-            {theme === "dark" ? "Switch to light" : "Switch to dark"}
-          </button>
-        </nav>
-      </div>
-    </header>
+        </div>
+      </header>
+      {open ? (
+        <div className="drawer">
+          <nav className="drawer-nav wrap" aria-label="Mobile">
+            {links.map((link) => (
+              <NavLink key={link.label} to={link.to} onClick={() => setOpen(false)}>
+                {link.label}
+              </NavLink>
+            ))}
+            <button className="text-btn" type="button" onClick={onToggle}>
+              {theme === "dark" ? "Switch to light" : "Switch to dark"}
+            </button>
+          </nav>
+        </div>
+      ) : null}
+    </>
   );
 }

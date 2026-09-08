@@ -91,8 +91,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: color-mix(in srgb, var(--bg) 86%, transparent);
-  backdrop-filter: blur(12px);
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -165,13 +164,10 @@ button {
 .drawer {
   position: fixed;
   inset: var(--nav) 0 0 0;
+  z-index: 25;
   background: var(--bg);
-  padding: 24px 20px 40px;
+  padding: 12px 0 40px;
   overflow: auto;
-}
-
-.drawer:not(.is-open) {
-  display: none;
 }
 
 .drawer-nav {
@@ -264,44 +260,45 @@ h1 {
 
 .scene {
   perspective: 900px;
-  min-height: 220px;
+  height: 240px;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 .stack {
   position: relative;
-  width: min(100%, 280px);
-  height: 180px;
+  width: min(92%, 260px);
+  height: 160px;
   transform-style: preserve-3d;
-  transform: rotateX(58deg) rotateZ(-18deg);
-  animation: spin 18s linear infinite;
+  transform: rotateX(58deg) rotateZ(-22deg);
+  animation: drift 8s ease-in-out infinite;
 }
 
 .plane {
   position: absolute;
-  inset: 0;
+  inset: 12% 8%;
   border: 1px solid var(--ink);
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  background: var(--bg);
   display: flex;
   align-items: flex-end;
   padding: 10px 12px;
-  transform: translateZ(calc(var(--d) * -28px)) translateY(calc(var(--d) * -10px));
-  box-shadow: var(--shadow);
+  transform: translateZ(calc(var(--d) * -26px)) translateY(calc(var(--d) * -12px));
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: rotateX(58deg) rotateZ(-22deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(62deg) rotateZ(-16deg) translateY(-10px);
+  }
 }
 
 .plane span {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;
-}
-
-@keyframes spin {
-  from {
-    transform: rotateX(58deg) rotateZ(-18deg) rotateY(0deg);
-  }
-  to {
-    transform: rotateX(58deg) rotateZ(-18deg) rotateY(360deg);
-  }
 }
 
 .tilt-frame {
@@ -489,6 +486,20 @@ h2 {
 
   .meta-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .scene {
+    height: 200px;
   }
 }
 
