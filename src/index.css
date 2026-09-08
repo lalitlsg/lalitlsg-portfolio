@@ -7,7 +7,7 @@
   --shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
   --nav: 64px;
   --max: 920px;
-  --gutter: clamp(28px, 8vw, 48px);
+  --gutter: 40px;
 }
 
 [data-theme="light"] {
@@ -585,6 +585,10 @@ h2 {
 }
 
 @media (min-width: 900px) {
+  :root {
+    --gutter: 32px;
+  }
+
   .menu-btn,
   .drawer {
     display: none !important;
