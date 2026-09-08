@@ -28,8 +28,8 @@ function ScrollToHash() {
     }
     const titles = {
       "/work": `${profile.name} | Work`,
-      "/blogs": `${profile.name} | Writing`,
-      "/links": `${profile.name} | Connect`,
+      "/blogs": `${profile.name} | Notes`,
+      "/links": `${profile.name} | Contact`,
     };
     document.title = titles[pathname] || `${profile.name} | ${profile.role}`;
   }, [pathname, hash]);
@@ -63,9 +63,6 @@ export default function App() {
         <a className="skip" href="#top">
           Skip to content
         </a>
-        <div className="orb orb-a" />
-        <div className="orb orb-b" />
-        <div className="grain" />
         <Navbar theme={theme} onToggle={() => setTheme(theme === "dark" ? "light" : "dark")} />
         <main id="top">
           <ScrollToHash />

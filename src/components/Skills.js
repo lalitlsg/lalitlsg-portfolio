@@ -4,47 +4,38 @@ import { awards, education, skillGroups } from "../data/site";
 export default function Skills() {
   return (
     <section className="wrap" id="skills">
-      <div className="section-head">
-        <div>
-          <p className="eyebrow">Craft</p>
-          <h2>Skills & education</h2>
-        </div>
-        <p className="kicker">A React / Next.js core, with performance, SSR, localization, and enough platform fluency to ship securely.</p>
-      </div>
-      <div className="skill-grid">
+      <header className="section-head">
+        <p className="index">02</p>
+        <h2>Skills</h2>
+      </header>
+      <div className="skill-list">
         {skillGroups.map((group) => (
-          <article className="skill-card" key={group.title}>
-            <h3>{group.title}</h3>
-            <div className="chips">
-              {group.items.map((item) => (
-                <span className="chip" key={item}>
-                  {item}
-                </span>
-              ))}
-            </div>
-          </article>
+          <p key={group.title}>
+            <strong>{group.title}</strong>
+            <span>{group.items.join(" · ")}</span>
+          </p>
         ))}
       </div>
-      <div className="split" style={{ marginTop: 16 }}>
-        <article className="edu">
+      <div className="meta-grid">
+        <div>
           <h3>Education</h3>
           {education.map((item) => (
-            <div className="role" key={item.title}>
-              <h3>{item.title}</h3>
-              <p className="kicker">
-                {item.place} · {item.period} · {item.meta}
-              </p>
-            </div>
+            <p key={item.title} className="meta-line">
+              {item.title} — {item.place}
+              <span>
+                {item.period} · {item.meta}
+              </span>
+            </p>
           ))}
-        </article>
-        <article className="edu">
+        </div>
+        <div>
           <h3>Awards</h3>
-          <ul className="highlights" style={{ marginTop: 14 }}>
-            {awards.map((award) => (
-              <li key={award}>{award}</li>
-            ))}
-          </ul>
-        </article>
+          {awards.map((award) => (
+            <p key={award} className="meta-line">
+              {award}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );
