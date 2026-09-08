@@ -4,9 +4,10 @@
   --muted: #9a9a9a;
   --line: #2c2c2c;
   --panel: #141414;
-  --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  --shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
   --nav: 64px;
-  --max: 880px;
+  --max: 920px;
+  --gutter: clamp(28px, 8vw, 48px);
 }
 
 [data-theme="light"] {
@@ -15,7 +16,7 @@
   --muted: #5c5c5c;
   --line: #d7d7d3;
   --panel: #ffffff;
-  --shadow: 0 16px 30px rgba(20, 20, 20, 0.08);
+  --shadow: 0 18px 36px rgba(20, 20, 20, 0.1);
 }
 
 * {
@@ -24,14 +25,10 @@
   padding: 0;
 }
 
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav) + 12px);
+  overflow-x: clip;
 }
 
 body {
@@ -77,14 +74,15 @@ button {
 
 .page {
   min-width: 0;
+  perspective: 1400px;
 }
 
 .wrap {
   width: 100%;
   max-width: var(--max);
   margin: 0 auto;
-  padding-left: max(20px, env(safe-area-inset-left));
-  padding-right: max(20px, env(safe-area-inset-right));
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
 .site-header {
@@ -120,7 +118,6 @@ button {
   border: 1px solid var(--ink);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;
-  letter-spacing: 0.04em;
 }
 
 .brand-name {
@@ -133,7 +130,7 @@ button {
 .nav-links {
   display: none;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   flex-wrap: nowrap;
 }
 
@@ -144,8 +141,8 @@ button {
   background: transparent;
   border: 0;
   cursor: pointer;
-  font-size: 0.86rem;
-  padding: 8px 10px;
+  font-size: 0.84rem;
+  padding: 8px 9px;
   white-space: nowrap;
 }
 
@@ -174,15 +171,14 @@ button {
 .drawer-nav {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
 .drawer-nav a,
 .drawer-nav .text-btn {
   display: block;
   text-align: left;
-  font-size: 1.35rem;
-  padding: 12px 0;
+  font-size: 1.3rem;
+  padding: 14px 0;
   color: var(--ink);
   border-bottom: 1px solid var(--line);
 }
@@ -194,7 +190,7 @@ main {
 .hero {
   padding: 48px 0 56px;
   display: grid;
-  gap: 40px;
+  gap: 36px;
 }
 
 .eyebrow,
@@ -218,12 +214,13 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(2.2rem, 8vw, 3.6rem);
+  font-size: clamp(2rem, 9vw, 3.6rem);
   margin: 12px 0 14px;
+  overflow-wrap: anywhere;
 }
 
 .display {
-  font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+  font-size: clamp(1.1rem, 2.6vw, 1.45rem);
   max-width: 28ch;
   margin-bottom: 16px;
 }
@@ -236,7 +233,7 @@ h1 {
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-top: 24px;
 }
 
@@ -244,9 +241,15 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 16px;
+  padding: 12px 16px;
   border: 1px solid var(--ink);
   font-size: 0.9rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px) translateZ(8px);
+  box-shadow: 0 10px 0 var(--line);
 }
 
 .btn-primary {
@@ -261,10 +264,22 @@ h1 {
 
 .scene {
   perspective: 900px;
-  height: 240px;
+  height: 250px;
   display: grid;
   place-items: center;
-  overflow: hidden;
+  position: relative;
+}
+
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: 40% -10% -20%;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  transform: perspective(420px) rotateX(68deg);
+  opacity: 0.45;
+  animation: floor 10s linear infinite;
 }
 
 .stack {
@@ -273,7 +288,8 @@ h1 {
   height: 160px;
   transform-style: preserve-3d;
   transform: rotateX(58deg) rotateZ(-22deg);
-  animation: drift 8s ease-in-out infinite;
+  animation: drift 7s ease-in-out infinite;
+  z-index: 1;
 }
 
 .plane {
@@ -285,6 +301,12 @@ h1 {
   align-items: flex-end;
   padding: 10px 12px;
   transform: translateZ(calc(var(--d) * -26px)) translateY(calc(var(--d) * -12px));
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.plane span {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
 }
 
 @keyframes drift {
@@ -293,22 +315,38 @@ h1 {
     transform: rotateX(58deg) rotateZ(-22deg) translateY(0);
   }
   50% {
-    transform: rotateX(62deg) rotateZ(-16deg) translateY(-10px);
+    transform: rotateX(64deg) rotateZ(-14deg) translateY(-12px);
   }
 }
 
-.plane span {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
+@keyframes floor {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 28px, 28px 0;
+  }
 }
 
 .tilt-frame {
-  perspective: 900px;
+  perspective: 1000px;
 }
 
 .tilt-inner {
   transform-style: preserve-3d;
-  transition: transform 0.18s ease;
+  transition: transform 0.2s ease;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px) rotateX(10deg);
+  transform-origin: center top;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
 }
 
 section {
@@ -329,16 +367,46 @@ h2 {
 }
 
 .timeline,
-.project-list {
+.project-list,
+.profile-grid {
   display: grid;
-  gap: 14px;
+  gap: 16px;
+}
+
+.exp,
+.project,
+.profile-card,
+.blog-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
 }
 
 .exp,
 .project {
-  background: var(--panel);
-  border: 1px solid var(--line);
   padding: 18px;
+}
+
+.company-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.logo-box {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border: 1px solid var(--ink);
+  display: grid;
+  place-items: center;
+  transform: rotateY(-18deg);
+}
+
+.logo-box svg {
+  width: 22px;
+  height: 22px;
 }
 
 .exp-top {
@@ -362,8 +430,7 @@ h2 {
   font-size: 0.98rem;
 }
 
-.role ul,
-.note-list {
+.role ul {
   margin-top: 8px;
   padding-left: 18px;
   color: var(--muted);
@@ -403,17 +470,68 @@ h2 {
   font-size: 0.75rem;
 }
 
+.profile-grid {
+  grid-template-columns: 1fr;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  min-height: 88px;
+}
+
+.profile-card img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.2);
+}
+
+.device {
+  perspective: 800px;
+  margin: 0 0 16px;
+}
+
+.device-screen {
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  transform: rotateY(var(--tilt)) rotateX(8deg);
+  box-shadow: 16px 18px 0 var(--line), 22px 28px 40px rgba(0, 0, 0, 0.4);
+  animation: bob 6s ease-in-out infinite;
+}
+
+.device-screen img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: rotateY(var(--tilt)) rotateX(8deg) translateY(0);
+  }
+  50% {
+    transform: rotateY(var(--tilt)) rotateX(4deg) translateY(-6px);
+  }
+}
+
 .tag {
   display: inline-block;
   margin-bottom: 8px;
 }
 
-.project h3 {
+.project h3,
+.blog-card h3 {
   font-size: 1.2rem;
   margin-bottom: 8px;
 }
 
-.project p {
+.project p,
+.blog-card p {
   color: var(--muted);
 }
 
@@ -425,8 +543,7 @@ h2 {
 
 .links a,
 .contact-row a,
-.sandbox a,
-.note-list a {
+.sandbox a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -438,22 +555,20 @@ h2 {
   word-break: break-word;
 }
 
-.note-list li {
-  display: grid;
-  gap: 4px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
+.blog-list {
   list-style: none;
-  margin-left: 0;
-  padding-left: 0;
+  display: grid;
+  gap: 14px;
 }
 
-.note-list {
-  padding-left: 0;
+.blog-card {
+  display: block;
+  padding: 18px;
+  transform: rotateX(2deg);
 }
 
-.note-list a {
-  color: var(--ink);
+.blog-card:hover {
+  transform: translateY(-4px);
 }
 
 .contact-row {
@@ -485,8 +600,13 @@ h2 {
     padding-top: 72px;
   }
 
-  .meta-grid {
+  .meta-grid,
+  .profile-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .profile-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -500,22 +620,23 @@ h2 {
   }
 
   .scene {
-    height: 200px;
+    height: 210px;
   }
 
   .brand-name {
     font-size: 0.86rem;
   }
-
-  .wrap {
-    max-width: 100%;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .stack,
-  .tilt-inner {
+  .tilt-inner,
+  .device-screen,
+  .reveal,
+  .scene::before {
     animation: none;
     transition: none;
+    opacity: 1;
+    transform: none;
   }
 }

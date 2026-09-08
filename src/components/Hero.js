@@ -5,7 +5,7 @@ import { profile } from "../data/site";
 export default function Hero() {
   return (
     <section className="hero wrap" id="about">
-      <div className="hero-copy">
+      <div className="hero-copy reveal is-in">
         <p className="eyebrow">
           {profile.role} · {profile.company}
         </p>

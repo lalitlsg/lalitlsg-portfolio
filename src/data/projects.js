@@ -15,6 +15,7 @@ export const projects = [
     link: "https://stoic-clarke-da7932.netlify.app/",
     githubLink: "https://github.com/lalitlsg/flickr-groups",
     tag: "React",
+    motif: "masonry",
     image: flicker1,
   },
   {
@@ -25,6 +26,7 @@ export const projects = [
     link: "https://expo.io/@lalitlsg/projects/shop",
     githubLink: "https://github.com/lalitlsg/react-native-shop-app-navigation-v5-",
     tag: "React Native",
+    motif: "shop",
     image: shop1,
   },
   {
@@ -34,6 +36,7 @@ export const projects = [
     link: "https://upbeat-einstein-10a425.netlify.app/",
     githubLink: "https://github.com/lalitlsg/one-for-me",
     tag: "React",
+    motif: "match",
     image: ofm1,
   },
   {
@@ -44,6 +47,7 @@ export const projects = [
     link: "https://lenden-68143.web.app/#/",
     githubLink: "https://github.com/lalitlsg/LenDen-Web-App",
     tag: "Vue",
+    motif: "ledger",
     image: lenden1,
   },
   {
@@ -54,6 +58,7 @@ export const projects = [
     link: "https://parking-e486e.web.app",
     githubLink: "https://github.com/lalitlsg/Park-My-Vehicle",
     tag: "Vue",
+    motif: "park",
     image: park1,
   },
   {
@@ -64,6 +69,7 @@ export const projects = [
     link: "https://github.com/lalitlsg/react-native-places-app",
     githubLink: "https://github.com/lalitlsg/react-native-places-app",
     tag: "React Native",
+    motif: "pin",
     image: places1,
   },
   {
@@ -73,6 +79,7 @@ export const projects = [
     link: "https://signup-24552.web.app",
     githubLink: "https://github.com/lalitlsg",
     tag: "Vue",
+    motif: "lock",
     image: signup1,
   },
 ];

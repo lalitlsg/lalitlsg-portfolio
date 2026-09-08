@@ -5,7 +5,7 @@ export default function Connect() {
   return (
     <section className="wrap" id="connect">
       <header className="section-head">
-        <p className="index">05</p>
+        <p className="index">06</p>
         <h2>Contact</h2>
       </header>
       <p className="lede">{profile.location}</p>

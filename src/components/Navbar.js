@@ -5,7 +5,8 @@ const links = [
   { to: { pathname: "/", hash: "#about" }, label: "About" },
   { to: { pathname: "/", hash: "#experience" }, label: "Experience" },
   { to: "/work", label: "Work" },
-  { to: "/blogs", label: "Notes" },
+  { to: { pathname: "/", hash: "#profiles" }, label: "Profiles" },
+  { to: "/blogs", label: "Blogs" },
   { to: "/links", label: "Contact" },
 ];
 

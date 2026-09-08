@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
+import CodingProfiles from "./components/CodingProfiles";
 import Writing from "./components/Writing";
 import Connect from "./components/Connect";
 import Footer from "./components/Footer";
@@ -18,7 +19,7 @@ function ScrollToHash() {
       "/": hash ? null : "top",
       "/home": hash ? null : "top",
       "/work": "work",
-      "/blogs": "writing",
+      "/blogs": "blogs",
       "/links": "connect",
     };
     const id = (hash || "").replace("#", "") || map[pathname];
@@ -28,7 +29,7 @@ function ScrollToHash() {
     }
     const titles = {
       "/work": `${profile.name} | Work`,
-      "/blogs": `${profile.name} | Notes`,
+      "/blogs": `${profile.name} | Blogs`,
       "/links": `${profile.name} | Contact`,
     };
     document.title = titles[pathname] || `${profile.name} | ${profile.role}`;
@@ -43,6 +44,7 @@ function Portfolio() {
       <Hero />
       <Experience />
       <Skills />
+      <CodingProfiles />
       <Projects />
       <Writing />
       <Connect />
