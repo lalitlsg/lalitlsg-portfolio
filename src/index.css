@@ -159,6 +159,7 @@ button {
 .menu-btn {
   border: 1px solid var(--line);
   padding: 8px 12px;
+  flex: 0 0 auto;
 }
 
 .drawer {
@@ -500,6 +501,14 @@ h2 {
 
   .scene {
     height: 200px;
+  }
+
+  .brand-name {
+    font-size: 0.86rem;
+  }
+
+  .wrap {
+    max-width: 100%;
   }
 }
 
