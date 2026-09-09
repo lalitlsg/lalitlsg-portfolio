@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("renders Lalit's name, blogs, and coding profiles", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getAllByText(/Lalit Garghate/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/SDE III/i).length).toBeGreaterThan(0);
+  expect(screen.getByRole("heading", { name: /blogs/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: /coding profiles/i })).toBeInTheDocument();
 });
