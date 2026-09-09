@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const links = [
-  { to: { pathname: "/", hash: "#about" }, label: "About" },
-  { to: { pathname: "/", hash: "#experience" }, label: "Experience" },
-  { to: "/work", label: "Work" },
-  { to: { pathname: "/", hash: "#profiles" }, label: "Profiles" },
-  { to: "/blogs", label: "Blogs" },
-  { to: "/links", label: "Contact" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "profiles", label: "Profile" },
+  { id: "work", label: "Work" },
+  { id: "blogs", label: "Blogs" },
+  { id: "connect", label: "Contact" },
 ];
+
+function sectionTop(id) {
+  const el = document.getElementById(id);
+  if (!el) return Number.POSITIVE_INFINITY;
+  return el.getBoundingClientRect().top + window.scrollY;
+}
 
 export default function Navbar({ theme, onToggle }) {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState("about");
 
   useEffect(() => {
     document.body.classList.toggle("nav-open", open);
@@ -26,17 +33,52 @@ export default function Navbar({ theme, onToggle }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    const updateActive = () => {
+      const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav")) || 64;
+      const marker = window.scrollY + navHeight + 16;
+      const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+
+      // Resolve by document order so nav label order can differ from section order.
+      const ordered = [...links].sort((a, b) => sectionTop(a.id) - sectionTop(b.id));
+      let current = ordered[0]?.id || "about";
+
+      if (nearBottom) {
+        current = ordered[ordered.length - 1].id;
+      } else {
+        for (const link of ordered) {
+          if (sectionTop(link.id) <= marker) current = link.id;
+        }
+      }
+
+      setActiveId((prev) => (prev === current ? prev : current));
+    };
+
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
+  }, []);
+
   return (
     <>
       <header className="site-header">
         <div className="wrap nav">
-          <NavLink className="brand" to="/" onClick={() => setOpen(false)}>
+          <NavLink className="brand" to="/" exact onClick={() => setOpen(false)}>
             <span className="mark">LG</span>
             <span className="brand-name">Lalit Garghate</span>
           </NavLink>
           <nav className="nav-links" aria-label="Primary">
             {links.map((link) => (
-              <NavLink key={link.label} to={link.to}>
+              <NavLink
+                key={link.id}
+                exact
+                to={{ pathname: "/", hash: `#${link.id}` }}
+                isActive={() => activeId === link.id}
+              >
                 {link.label}
               </NavLink>
             ))}
@@ -53,7 +95,13 @@ export default function Navbar({ theme, onToggle }) {
         <div className="drawer">
           <nav className="drawer-nav wrap" aria-label="Mobile">
             {links.map((link) => (
-              <NavLink key={link.label} to={link.to} onClick={() => setOpen(false)}>
+              <NavLink
+                key={link.id}
+                exact
+                to={{ pathname: "/", hash: `#${link.id}` }}
+                isActive={() => activeId === link.id}
+                onClick={() => setOpen(false)}
+              >
                 {link.label}
               </NavLink>
             ))}

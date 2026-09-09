@@ -9,7 +9,6 @@ import CodingProfiles from "./components/CodingProfiles";
 import Writing from "./components/Writing";
 import Connect from "./components/Connect";
 import Footer from "./components/Footer";
-import { profile } from "./data/site";
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
@@ -28,11 +27,11 @@ function ScrollToHash() {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     const titles = {
-      "/work": `${profile.name} | Work`,
-      "/blogs": `${profile.name} | Blogs`,
-      "/links": `${profile.name} | Contact`,
+      "/work": "Work · Lalit Garghate",
+      "/blogs": "Blogs · Lalit Garghate",
+      "/links": "Contact · Lalit Garghate",
     };
-    document.title = titles[pathname] || `${profile.name} | ${profile.role}`;
+    document.title = titles[pathname] || "Lalit Garghate";
   }, [pathname, hash]);
 
   return null;
