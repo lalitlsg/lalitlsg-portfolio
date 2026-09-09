@@ -42,21 +42,136 @@ const profiles = [
   },
 ];
 
+const AUTO_SPEED = 16; // px per second
+
+function ShotCard({ shot, name, index, decorative }) {
+  return (
+    <figure className="achieve-card" aria-hidden={decorative ? "true" : undefined}>
+      <img
+        src={shot}
+        alt={decorative ? "" : `${name} achievement ${index + 1}`}
+        draggable="false"
+      />
+    </figure>
+  );
+}
+
 export default function CodingProfiles() {
   const [activeId, setActiveId] = useState(profiles[0].id);
   const scrollerRef = useRef(null);
   const active = profiles.find((profile) => profile.id === activeId) || profiles[0];
 
   useEffect(() => {
-    if (scrollerRef.current) scrollerRef.current.scrollLeft = 0;
-  }, [activeId]);
+    const root = scrollerRef.current;
+    if (!root) return undefined;
 
-  const scrollByCard = (direction) => {
-    const node = scrollerRef.current;
-    if (!node) return;
-    const step = Math.min(420, Math.max(260, node.clientWidth * 0.72));
-    node.scrollBy({ left: direction * step, behavior: "smooth" });
-  };
+    root.scrollLeft = 0;
+
+    const reduceMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let raf = 0;
+    let paused = false;
+    let dragging = false;
+    let last = performance.now();
+    let startX = 0;
+    let startScroll = 0;
+    let resumeTimer = 0;
+
+    const loopWidth = () => root.scrollWidth / 2;
+
+    const wrapScroll = () => {
+      const half = loopWidth();
+      if (half <= 0) return;
+      if (root.scrollLeft >= half) root.scrollLeft -= half;
+      else if (root.scrollLeft < 0) root.scrollLeft += half;
+    };
+
+    const pause = () => {
+      paused = true;
+      window.clearTimeout(resumeTimer);
+    };
+
+    const resume = () => {
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(() => {
+        if (dragging || root.matches(":hover") || root.contains(document.activeElement)) return;
+        paused = false;
+        last = performance.now();
+      }, 120);
+    };
+
+    const tick = (now) => {
+      const dt = Math.min(48, now - last) / 1000;
+      last = now;
+      if (!reduceMotion && !paused && !dragging) {
+        root.scrollLeft += AUTO_SPEED * dt;
+        wrapScroll();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onPointerDown = (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      dragging = true;
+      pause();
+      startX = event.clientX;
+      startScroll = root.scrollLeft;
+      root.classList.add("is-dragging");
+      root.setPointerCapture(event.pointerId);
+    };
+
+    const onPointerMove = (event) => {
+      if (!dragging) return;
+      root.scrollLeft = startScroll - (event.clientX - startX);
+      wrapScroll();
+    };
+
+    const onPointerUp = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      root.classList.remove("is-dragging");
+      if (root.hasPointerCapture?.(event.pointerId)) {
+        root.releasePointerCapture(event.pointerId);
+      }
+      if (root.matches(":hover")) pause();
+      else resume();
+    };
+
+    const onWheel = () => {
+      pause();
+      resume();
+    };
+
+    root.addEventListener("mouseenter", pause);
+    root.addEventListener("mouseleave", resume);
+    root.addEventListener("focusin", pause);
+    root.addEventListener("focusout", resume);
+    root.addEventListener("pointerdown", onPointerDown);
+    root.addEventListener("pointermove", onPointerMove);
+    root.addEventListener("pointerup", onPointerUp);
+    root.addEventListener("pointercancel", onPointerUp);
+    root.addEventListener("wheel", onWheel, { passive: true });
+    root.addEventListener("scroll", wrapScroll, { passive: true });
+
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(resumeTimer);
+      root.removeEventListener("mouseenter", pause);
+      root.removeEventListener("mouseleave", resume);
+      root.removeEventListener("focusin", pause);
+      root.removeEventListener("focusout", resume);
+      root.removeEventListener("pointerdown", onPointerDown);
+      root.removeEventListener("pointermove", onPointerMove);
+      root.removeEventListener("pointerup", onPointerUp);
+      root.removeEventListener("pointercancel", onPointerUp);
+      root.removeEventListener("wheel", onWheel);
+      root.removeEventListener("scroll", wrapScroll);
+    };
+  }, [activeId]);
 
   return (
     <section className="wrap" id="profiles">
@@ -84,24 +199,32 @@ export default function CodingProfiles() {
               ))}
             </div>
             <div className="profile-controls">
-              <button type="button" className="profile-ctrl" onClick={() => scrollByCard(-1)} aria-label="Previous achievements">
-                ‹
-              </button>
-              <button type="button" className="profile-ctrl" onClick={() => scrollByCard(1)} aria-label="Next achievements">
-                ›
-              </button>
               <a className="profile-link" href={active.href} target="_blank" rel="noreferrer">
                 Open profile
               </a>
             </div>
           </div>
 
-          <div className="profile-scroller" ref={scrollerRef} tabIndex={0} aria-label={`${active.name} achievements`}>
-            {active.shots.map((shot, index) => (
-              <figure className="achieve-card" key={`${active.id}-${index}`}>
-                <img src={shot} alt={`${active.name} achievement ${index + 1}`} />
-              </figure>
-            ))}
+          <div
+            className="profile-marquee"
+            ref={scrollerRef}
+            tabIndex={0}
+            aria-label={`${active.name} achievements`}
+          >
+            <div className="profile-marquee-track" key={active.id}>
+              {active.shots.map((shot, index) => (
+                <ShotCard key={`${active.id}-a-${index}`} shot={shot} name={active.name} index={index} />
+              ))}
+              {active.shots.map((shot, index) => (
+                <ShotCard
+                  key={`${active.id}-b-${index}`}
+                  shot={shot}
+                  name={active.name}
+                  index={index}
+                  decorative
+                />
+              ))}
+            </div>
           </div>
         </div>
       </Reveal>
