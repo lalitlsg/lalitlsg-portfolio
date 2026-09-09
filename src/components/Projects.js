@@ -16,7 +16,7 @@ export default function Projects() {
           <Reveal key={project.id}>
             <Tilt>
               <article className={`project motif-${project.motif}`}>
-                <div className="device" style={{ "--tilt": `${index % 2 === 0 ? -14 : 14}deg` }}>
+                <div className="device" style={{ "--tilt": `${index % 2 === 0 ? -10 : 10}deg` }}>
                   <div className="device-screen">
                     <img src={project.image} alt={`${project.title} screenshot`} />
                   </div>
